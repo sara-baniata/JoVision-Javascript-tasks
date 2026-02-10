@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>take the request parameter</title>
+</head>
+<body>
+<form onsubmit="fun(event)">
+<label>Enter your name:</label>
+<input type="text" name="name" placeholder="Name" id="name">
+<br>
+<br>
+<input type="submit" id="">
+</form>
+<script>
+function fun(event){
+    event.preventDefault();
+    fetch("https://api.agify.io?name="+document.getElementById('name').value)
+	    .then(response => response.json())
+	    .then(data => {console.log(data) ;
+		      window.alert("Your name is: "+document.getElementById('name').value+
+		             "\nYour age is: "+data.age);})
+
+	    .catch(error => window.alert('Error:'+error));
+        
+
+}
+</script>
+</body>
+</html>
